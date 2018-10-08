@@ -53,35 +53,35 @@ public class ExpenseEditActivity extends DBActivity
     /**
      * Save floating action button
      */
-    private FloatingActionButton fab;
+    public FloatingActionButton fab;
     /**
      * Edit text that contains the description
      */
-    private EditText             descriptionEditText;
+    public EditText             descriptionEditText;
     /**
      * Edit text that contains the amount
      */
-    private EditText             amountEditText;
+    public EditText             amountEditText;
     /**
      * Button for date selection
      */
-    private Button               dateButton;
+    public Button               dateButton;
     /**
      * Textview that displays the type of expense
      */
-    private TextView             expenseType;
+    public TextView             expenseType;
     /**
      * Expense that is being edited (will be null if it's a new one)
      */
-    private Expense              expense;
+    public Expense              expense;
     /**
      * The date of the expense
      */
-    private Date                 date;
+    public Date                 date;
     /**
      * Is the new expense a revenue
      */
-    private boolean isRevenue = false;
+    public boolean isRevenue = false;
 
 // -------------------------------------->
 
@@ -206,7 +206,7 @@ public class ExpenseEditActivity extends DBActivity
     /**
      * Set-up revenue and payment buttons
      */
-    private void setUpButtons()
+    public void setUpButtons()
     {
         expenseType = (TextView) findViewById(R.id.expense_type_tv);
 
@@ -263,7 +263,7 @@ public class ExpenseEditActivity extends DBActivity
     /**
      * Set revenue text view layout
      */
-    private void setExpenseTypeTextViewLayout()
+    public void setExpenseTypeTextViewLayout()
     {
         if( isRevenue )
         {
@@ -284,7 +284,7 @@ public class ExpenseEditActivity extends DBActivity
     /**
      * Set up text field focus behavior
      */
-    private void setUpTextFields()
+    public void setUpTextFields()
     {
         ((TextInputLayout) findViewById(R.id.amount_inputlayout)).setHint(getResources().getString(R.string.amount, CurrencyHelper.getUserCurrency(this).getSymbol()));
 
@@ -308,7 +308,7 @@ public class ExpenseEditActivity extends DBActivity
     /**
      * Set up the date button
      */
-    private void setUpDateButton()
+    public void setUpDateButton()
     {
         dateButton = (Button) findViewById(R.id.date_button);
         UIHelper.removeButtonBorder(dateButton); // Remove border on lollipop
@@ -341,7 +341,7 @@ public class ExpenseEditActivity extends DBActivity
         });
     }
 
-    private void updateDateButtonDisplay()
+    public void updateDateButtonDisplay()
     {
         SimpleDateFormat formatter = new SimpleDateFormat(getResources().getString(R.string.add_expense_date_format), Locale.getDefault());
         dateButton.setText(formatter.format(date));
