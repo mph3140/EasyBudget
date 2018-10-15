@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1059545111054",
+    "firebase_url": "https://easybudget-8a159.firebaseio.com",
+    "project_id": "easybudget-8a159",
+    "storage_bucket": "easybudget-8a159.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059545111054:android:fb8caf7057cccee7",
+        "android_client_info": {
+          "package_name": "com.benoitletondor.easybudgetapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059545111054-ainkt30dm9r8i22ii79sqol8mp4cmgrk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSRdVEUY4783u5CD5GSyHI_rIzdzLUg4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
