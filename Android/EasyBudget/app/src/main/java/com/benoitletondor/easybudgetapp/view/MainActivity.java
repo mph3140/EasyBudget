@@ -1072,6 +1072,27 @@ public class MainActivity extends DBActivity
                 menu.collapse();
             }
         });
+        FloatingActionButton fabNewInterestCalculator = (FloatingActionButton) findViewById(R.id.fab_new_interest_calculator);
+        fabNewInterestCalculator.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent startIntent = new Intent(MainActivity.this, CalculateInterestActivity.class);
+                startIntent.putExtra("dateStart", calendarFragment.getSelectedDate().getTime());
+
+                if( UIHelper.areAnimationsEnabled(MainActivity.this) )
+                {
+                    startIntent.putExtra(ANIMATE_TRANSITION_KEY, true);
+                    startIntent.putExtra(CENTER_X_KEY, (int) menu.getX() + (int) ((float) menu.getWidth() / 1.2f));
+                    startIntent.putExtra(CENTER_Y_KEY, (int) menu.getY() + (int) ((float) menu.getHeight() / 1.2f));
+                }
+
+                ActivityCompat.startActivity(MainActivity.this, startIntent, null);
+
+                menu.collapse();
+            }
+        });
 
         /*
          * Expense Recycler view
