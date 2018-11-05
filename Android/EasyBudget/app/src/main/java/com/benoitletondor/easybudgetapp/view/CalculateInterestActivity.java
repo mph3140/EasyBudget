@@ -4,6 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.benoitletondor.easybudgetapp.R;
 
@@ -17,6 +21,17 @@ public class CalculateInterestActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final Button button = findViewById(R.id.calculate_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                double monthlyEstimate = calculateMonthlyPayment();
+
+                TextView monthlyEstimateView = findViewById(R.id.monthly_estimate);
+                monthlyEstimateView.setText("$" + String.format("%.2f", monthlyEstimate) + " per month.");
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -34,6 +49,28 @@ public class CalculateInterestActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public double calculateMonthlyPayment(){
+
+        String expenseString = ((EditText)findViewById(R.id.expense_amount_edittext)).getText().toString();
+        double expense = Double.parseDouble(expenseString);
+
+        String downPaymentString = ((EditText)findViewById(R.id.downpayment_edittext)).getText().toString();
+        double downPayment = Double.parseDouble(downPaymentString);
+
+        String salesTaxString = ((EditText)findViewById(R.id.sales_tax_edittext)).getText().toString();
+        double salesTax = Double.parseDouble(salesTaxString);
+
+        String interestString = ((EditText)findViewById(R.id.interest_edittext)).getText().toString();
+        double interest = Double.parseDouble(interestString);
+
+        String loanTermString = ((EditText)findViewById(R.id.loan_term_edittext)).getText().toString();
+        int loanTerm = Integer.parseInt(loanTermString);
+
+        double totalPayment = (((expense * (1 + salesTax)) - downPayment)) * (1 + interest);
+
+        return totalPayment / loanTerm;
     }
 
 }
