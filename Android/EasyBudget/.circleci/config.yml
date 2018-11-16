@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/EasyBudget/Android/EasyBudget
+    working_directory: .circleci/config.yml
     docker:
       - image: circleci/android:api-25-alpha
     environment:
