@@ -128,13 +128,13 @@
             tools:ignore="RtlHardcoded">
 
             <com.getbase.floatingactionbutton.AddFloatingActionButton
-                android:id="@+id/fab_new_interest_calculator"
+                android:id="@+id/fab_new_calculator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 fab:fab_colorNormal="@color/fab_add_monthly_expense"
                 fab:fab_colorPressed="@color/fab_add_monthly_expense_pressed"
                 fab:fab_plusIconColor="@android:color/white"
-                fab:fab_title="Calculate Monthly Payment"
+                fab:fab_title="Calculators"
                 fab:fab_icon="@drawable/ic_autorenew_white"
                 fab:fab_size="mini" />
 

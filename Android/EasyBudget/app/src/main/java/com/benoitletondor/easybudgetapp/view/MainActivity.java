@@ -1072,13 +1072,14 @@ public class MainActivity extends DBActivity
                 menu.collapse();
             }
         });
-        FloatingActionButton fabNewInterestCalculator = (FloatingActionButton) findViewById(R.id.fab_new_interest_calculator);
+        FloatingActionButton fabNewInterestCalculator = (FloatingActionButton) findViewById(R.id.fab_new_calculator);
         fabNewInterestCalculator.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Intent startIntent = new Intent(MainActivity.this, CalculateInterestActivity.class);
+                //Intent startIntent = new Intent(MainActivity.this, CalculateInterestActivity.class);
+                Intent startIntent = new Intent(MainActivity.this, CalculatorsActivity.class);
                 startIntent.putExtra("dateStart", calendarFragment.getSelectedDate().getTime());
 
                 if( UIHelper.areAnimationsEnabled(MainActivity.this) )

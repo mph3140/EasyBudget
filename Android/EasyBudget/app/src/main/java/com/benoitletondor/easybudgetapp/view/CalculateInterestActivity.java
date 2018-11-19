@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.benoitletondor.easybudgetapp.R;
+import com.benoitletondor.easybudgetapp.helper.CalculateMonthlyPaymentHelper;
 
 public class CalculateInterestActivity extends AppCompatActivity {
 
@@ -26,13 +27,14 @@ public class CalculateInterestActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                double monthlyEstimate = calculateMonthlyPayment();
+                String monthlyPayment = CalculateMonthlyPaymentHelper.calculateMonthlyPayment(getUiExpenseInDouble(), getUiDownPaymentInDouble(), getUiSalesTaxInDouble(), getUiInterestInDouble(), getUiLoanTermInInt());
 
                 TextView monthlyEstimateView = findViewById(R.id.monthly_estimate);
-                monthlyEstimateView.setText("$" + String.format("%.2f", monthlyEstimate) + " per month.");
+                monthlyEstimateView.setText("$" + monthlyPayment + " per month.");
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -51,26 +53,44 @@ public class CalculateInterestActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public double calculateMonthlyPayment(){
+//    public double calculateMonthlyPayment(double expense, double downPayment, double salesTax, double interest, int loanTerm){
+//
+//        double totalPayment = (((expense * (1 + salesTax)) - downPayment)) * (1 + interest);
+//
+//        return totalPayment / loanTerm;
+//    }
 
+    public double getUiExpenseInDouble(){
         String expenseString = ((EditText)findViewById(R.id.expense_amount_edittext)).getText().toString();
         double expense = Double.parseDouble(expenseString);
+        return expense;
+    }
 
+    public double getUiDownPaymentInDouble(){
         String downPaymentString = ((EditText)findViewById(R.id.downpayment_edittext)).getText().toString();
         double downPayment = Double.parseDouble(downPaymentString);
 
+        return downPayment;
+    }
+
+    public double getUiSalesTaxInDouble(){
         String salesTaxString = ((EditText)findViewById(R.id.sales_tax_edittext)).getText().toString();
         double salesTax = Double.parseDouble(salesTaxString);
 
+        return salesTax;
+    }
+
+    public double getUiInterestInDouble(){
         String interestString = ((EditText)findViewById(R.id.interest_edittext)).getText().toString();
         double interest = Double.parseDouble(interestString);
 
+        return interest;
+    }
+
+    public int getUiLoanTermInInt(){
         String loanTermString = ((EditText)findViewById(R.id.loan_term_edittext)).getText().toString();
         int loanTerm = Integer.parseInt(loanTermString);
 
-        double totalPayment = (((expense * (1 + salesTax)) - downPayment)) * (1 + interest);
-
-        return totalPayment / loanTerm;
+        return loanTerm;
     }
-
 }
