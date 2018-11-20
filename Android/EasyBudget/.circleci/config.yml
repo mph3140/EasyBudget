@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/repo/Android/EasyBudget
+    working_directory: ~/repo
     docker:
       - image: circleci/android:api-25-alpha
     environment:
@@ -9,23 +9,23 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "Android/EasyBudget/build.gradle" }}-{{ checksum  "Android/EasyBudget/app/build.gradle" }}
 #      - run:
 #         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
 #         command: sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: Android/EasyBudget/gradlew androidDependencies
       - save_cache:
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+          key: jars-{{ checksum "Android/EasyBudget/build.gradle" }}-{{ checksum  "Android/EasyBudget/app/build.gradle" }}
       - run:
           name: Run Tests
-          command: ./gradlew lint test
+          command: Android/EasyBudget/gradlew lint test
       - store_artifacts:
-          path: app/build/reports
+          path: Android/EasyBudget/app/build/reports
           destination: reports
       - store_test_results:
-          path: app/build/test-results
+          path: Android/EasyBudget/app/build/test-results
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
