@@ -103,6 +103,7 @@
             android:label="@string/title_activity_premium"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar"></activity>
+        <activity android:name=".view.CalculatorsActivity"></activity>
 
         <!-- Push -->
         <service
